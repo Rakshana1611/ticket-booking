@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="home">
+    <p>From</p><input type="text" placeholder="From">
+    <p>To</p><input type="text" placeholder="To">
+    <button>Search flights</button>
+    <hr>
+    <h1>Available flights</h1>
+    <div>
+        {% for f in flights %}
+            <p><b>{{ f.company }}</b></p>
+            Flight: {{ f.flight_name }} | {{ f.flight_no }}<br>
+            From: {{ f.origin }} → {{ f.destination }}<br>
+            Date: {{ f.flight_date }} | Time: {{ f.departure_time }}<br>
+            Price: ${{ f.price }}<br>
+
+            {% if f.id %}
+                <a href="{% url 'book_now' f.id %}"><button>Book Now</button></a>
+            {% else %}
+                <p style="color: red;">Error: Flight has no valid ID</p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

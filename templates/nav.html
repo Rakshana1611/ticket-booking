@@ -1,0 +1,15 @@
+<div class="navs">
+    <span><h1>Quicksky flights</h1></span>
+        <span id="navs">
+           {% if home %}
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'history' %}">History</a>
+            <a href="{% url 'login' %}">Logout</a>
+           {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'support' %}">Support</a>
+            <a href="{% url 'about' %}">About</a>
+           {% endif %}
+        </span>
+</div>

@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+{% if booking %}
+    {% for bookings in booking %}
+        <div class="history">
+            <h3>Flight Details</h3>
+            <p>Flight Company: {{ bookings.flight.company }}</p>
+            <p>Flight Name: {{ bookings.flight.flight_name }}</p>
+            <p>Flight Number: {{ bookings.flight.flight_no }}</p>
+            <p>From: {{ bookings.flight.origin }}</p>
+            <p>To: {{ bookings.flight.destination }}</p>
+            <p>Departure Time: {{ bookings.flight.departure_time }}</p>
+            <p>Flight Date: {{ bookings.flight.flight_date }}</p>
+            <p>Ticket Price: ${{ bookings.flight.price }}</p>
+
+            <h3>Passenger Details</h3>
+            <p>Passenger Name: {{ bookings.passenger_name }}</p>
+            <p>Email: {{ bookings.email }}</p>
+            <p>Phone: {{ bookings.phone }}</p>
+            <p>Aadhaar Number: {{ bookings.aadhaar }}</p>
+            <p>Age: {{ bookings.age }}</p>
+            <p>Seat Class: {{ bookings.seat_class }}</p>
+            <p>Seat Number: {{ bookings.seat_number }}</p>
+            <form action="{% url 'delete' bookings.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+
+        </div>
+    {% endfor %}
+{% else %}
+    <h4>No bookings</h4>
+{% endif %}
+
+{% endblock %}

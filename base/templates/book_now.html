@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <div class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h1>✈️ Flight Booking Form</h1>
+            <h4>Flight Details</h4>
+            <hr>
+            <label>Flight Company:</label>
+            <input type="text" value="{{ flight.company }}" readonly>
+            <label>Flight Name:</label>
+            <input type="text" value="{{ flight.flight_name }}" readonly>
+
+            <label>Flight Number:</label>
+            <input type="text" value="{{ flight.flight_no }}" readonly>
+
+            <label>From:</label>
+            <input type="text" value="{{ flight.origin }}" readonly>
+
+            <label>To:</label>
+            <input type="text" value="{{ flight.destination }}" readonly>
+
+            <label>Date:</label>
+            <input type="text" value="{{ flight.flight_date }}" readonly>
+
+            <label>Price:</label>
+            <input type="text" value="{{ flight.price }}" readonly>
+
+            <h4>Passenger Details</h4>
+            <hr>
+            <label>Passenger Name:</label>
+            <input type="text" name="passenger_name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Phone number:</label>
+            <input type="text" name="phone" required>
+
+            <label>Aadhaar Number:</label>
+            <input type="text" name="aadhaar" required>
+
+            <label>Age:</label>
+            <input type="number" name="age" required>
+
+            <label>Seat Class:</label>
+            <input type="text" name="seat_class" required>
+
+            <label>Seat Number:</label>
+            <input type="text" name="seat_number" required>
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
+</center>
+
+{% endblock %}
